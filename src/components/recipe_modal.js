@@ -11,13 +11,31 @@ class RecipeModal extends Component {
 		}
 	}
 
+	componentDidMount(){
+		if (this.props.recipeItems == undefined){
+			console.log('undef');
+		}
+		else (
+			//console.log('ghg' + this.props.recipeItems[0].name);
+			this.setState({
+				recipeName: this.props.recipeItems[0].name, 
+				recipeIngredients: this.props.recipeItems[0].ingredients
+			}),
 
+			this.refs.recipeNameInput.value = "hello"
+
+		)
+	}
+
+	fillValues(){
+		//console.log(this.props.recipeItems);
+	}
 
 	submitRecipe(){
-		//console.log(this.state.recipeName);
+		//call saveRecipe func and then clear state
 		this.props.saveRecipe(this.state.recipeName, this.state.recipeIngredients);
 		$('#enterRecipeModal').modal('hide');
-		//this.refs.recipeNameInput.value = "";
+		this.setState({recipeName: "", recipeIngredients: ""});
 	}
 
 

@@ -2,23 +2,27 @@ import React, {Component} from 'react';
 //import RecipeModal from './recipe_modal';
 import RecipeList from './recipe_list';
 
-class AddRecipe extends Component {
+class EditRecipe extends Component {
 	constructor(props){
 		super(props);
 
 		this.state = {
-			recipeName: "",
-			recipeIngredients: ""
+			recipeName: this.props.recipeDetail[0],
+			recipeIngredients: this.props.recipeDetail[1]
 		}
 	}
 
-
-	submitRecipe(){
-		//call saveRecipe func and then clear state
-		this.props.saveRecipe(this.state.recipeName, this.state.recipeIngredients);
-		$('#enterRecipeModal').modal('hide');
-		this.setState({recipeName: "", recipeIngredients: ""});
+	componentDidMount(){
+		$('#editRecipeModal').modal('show');
 	}
+
+
+	// saveRecipe(){
+	// 	//call saveRecipe func and then clear state
+	// 	this.props.saveRecipe(this.state.recipeName, this.state.recipeIngredients);
+	// 	$('#enterRecipeModal').modal('hide');
+	// 	this.setState({recipeName: "", recipeIngredients: ""});
+	// }
 
 
 	render(){
@@ -26,7 +30,7 @@ class AddRecipe extends Component {
 			<div>	
 
 
-				<div className="modal fade" id="enterRecipeModal" role="dialog"  aria-hidden="true">
+				<div className="modal fade" id="editRecipeModal" role="dialog"  aria-hidden="true">
 				  <div className="modal-dialog" role="document">
 				    <div className="modal-content">
 
@@ -50,7 +54,7 @@ class AddRecipe extends Component {
 
 				      <div className="modal-footer">
 				        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-				        <button onClick={ () => { this.submitRecipe()}} type="button" className="btn btn-primary">Save</button>
+				        <button onClick={ () => { this.saveRecipe()}} type="button" className="btn btn-primary">Save</button>
 				      </div>
 
 				    </div>
@@ -65,4 +69,4 @@ class AddRecipe extends Component {
 
 }
 
-export default AddRecipe;
+export default EditRecipe;

@@ -1,23 +1,22 @@
 import React, { Component } from 'react';
 import AddRecipe from './add_recipe';
-import RecipeModal from './recipe_modal';
+//import RecipeModal from './recipe_modal';
 
 class RecipeList extends Component {
 	constructor(props){
 		super(props);
-		this.state = {
-			editClicked: false
-		}
 	}
 
 
 
 	render (){
-		const editRecipe = () => {
-			this.setState({editClicked: true});
-		}
+		// const editRecipe = () => {
+		// 	//$('#enterRecipeModal').modal('show');
+		// 	this.setState({editClicked: true});
+		// 	this.props.editRecipe();
+		// }
 
-		const recipes = this.props.recipeList1.map((recipe) => {
+		const recipes = this.props.recipeList.map((recipe) => {
 			return (
 				//accordion
 				<div className="card" key={recipe.name}>
@@ -42,7 +41,7 @@ class RecipeList extends Component {
 				    			)
 				    		})
 				      	}
-				      	<button onClick={ editRecipe } type="button" className="btn btn-outline-dark">Edit</button>
+				      	<button onClick={ () =>{ this.props.handleClick(recipe.name, recipe.ingredients)}} type="button" className="btn btn-outline-dark">Edit</button>
 				      	<button type="button" className="btn btn-danger">Delete</button>
 				      </div>
 				    </div>
@@ -56,7 +55,7 @@ class RecipeList extends Component {
 				<div id="accordion">
 					{recipes}
 				</div>
-				{this.state.editClicked == true ? <RecipeModal/> : null}
+				{/*{this.state.editClicked == true ? <AddRecipe recipeItems = {this.props.recipeList}/> : null}*/}
 			</div>
 		)
 	}
