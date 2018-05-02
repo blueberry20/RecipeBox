@@ -16,39 +16,51 @@ export default class App extends Component {
 	}
 
 	saveRecipe(name, ingredients) {
-		//console.log(name);
-  		//console.log(this.state.recipeList);
   		//dont mutate state directly. make a copy here and add new value
+  		if (name.length < 2) {
+  			//this.state.error = true;
+  			console.log(this.state.error);
+  			return;
+  		}
 		let splitIngredients = ingredients.split(",");
   		let arrayCopy = this.state.recipeItems.slice();
   		arrayCopy.push({name: name, ingredients: splitIngredients});
-  		//console.log(arrayCopy);
 		this.setState({recipeItems: arrayCopy});
 	}
 
-	editRecipe(){
-		console.log('edit');
-		//this.setState({editClicked: true});
-		$('#enterRecipeModal').modal('show');
-		//this.setState({editClicked : true})
+	updateRecipe(name, ingredients) {
+		let splitIngredients = ingredients.split(",");
+		let arrayCopy = this.state.recipeItems.slice();
+
+		//Find index of specific object using findIndex method.    
+		let objIndex = arrayCopy.findIndex((obj => obj.name == name));
+
+		//Update object's name property.
+		arrayCopy[objIndex].ingredients = splitIngredients
+
+		this.setState({recipeItems: arrayCopy});
+		this.setState({editClicked: false});
 
 	}
 
-	handleClick(name, ingredients) {
-		console.log(name);		
+
+	handleEditClick(name, ingredients) {
+		//console.log(name);		
 		this.setState({editClicked: true});
 		let recipeToEditCopy = [];
 		recipeToEditCopy.push(name, ingredients);
 		this.setState({recipeToEdit: recipeToEditCopy});
+		//console.log(this.state.recipeToEdit);
 		$('#editRecipeModal').modal('show');
+
 	}
 
   render() {
     return (
       <div>
-      	<RecipeList handleClick = {this.handleClick.bind(this)} recipeList = {this.state.recipeItems} />
+      	<RecipeList handleEditClick = {this.handleEditClick.bind(this)} recipeList = {this.state.recipeItems} />
       	<AddRecipe saveRecipe = {this.saveRecipe.bind(this)} />
-      	{this.state.editClicked == true ? <EditRecipe recipeDetail = {this.state.recipeToEdit} /> : null}
+      	{this.state.editClicked == true ? <EditRecipe updateRecipe = {this.updateRecipe.bind(this)} recipeDetail = {this.state.recipeToEdit} /> : null}
       	<button type="button" className="btn btn-primary" data-toggle="modal" data-target="#enterRecipeModal">Add Recipe</button>
       </div>
     );

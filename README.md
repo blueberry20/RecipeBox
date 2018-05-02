@@ -1,8 +1,5 @@
-# ReduxSimpleStarter
 
-Interested in learning [Redux](https://www.udemy.com/react-redux/)?
-
-### Getting Started
+React app where you can add recipes, edit and delete them.
 
 There are two methods for getting started with this repo.
 

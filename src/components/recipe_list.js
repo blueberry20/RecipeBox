@@ -41,7 +41,7 @@ class RecipeList extends Component {
 				    			)
 				    		})
 				      	}
-				      	<button onClick={ () =>{ this.props.handleClick(recipe.name, recipe.ingredients)}} type="button" className="btn btn-outline-dark">Edit</button>
+				      	<button onClick={ () =>{ this.props.handleEditClick(recipe.name, recipe.ingredients)}} type="button" className="btn btn-outline-dark">Edit</button>
 				      	<button type="button" className="btn btn-danger">Delete</button>
 				      </div>
 				    </div>

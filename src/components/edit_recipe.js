@@ -17,12 +17,12 @@ class EditRecipe extends Component {
 	}
 
 
-	// saveRecipe(){
-	// 	//call saveRecipe func and then clear state
-	// 	this.props.saveRecipe(this.state.recipeName, this.state.recipeIngredients);
-	// 	$('#enterRecipeModal').modal('hide');
-	// 	this.setState({recipeName: "", recipeIngredients: ""});
-	// }
+	updateRecipe(){
+		//call saveRecipe func and then clear state
+		this.props.updateRecipe(this.state.recipeName, this.state.recipeIngredients);
+		$('#editRecipeModal').modal('hide');
+		this.setState({recipeName: "", recipeIngredients: ""});
+	}
 
 
 	render(){
@@ -35,7 +35,7 @@ class EditRecipe extends Component {
 				    <div className="modal-content">
 
 				      <div className="modal-header">
-				        <h5 className="modal-title" id="exampleModalLabel">Add a recipe</h5>
+				        <h5 className="modal-title" id="exampleModalLabel">Edit a recipe</h5>
 				        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
 				          <span aria-hidden="true">&times;</span>
 				        </button>
@@ -54,7 +54,7 @@ class EditRecipe extends Component {
 
 				      <div className="modal-footer">
 				        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-				        <button onClick={ () => { this.saveRecipe()}} type="button" className="btn btn-primary">Save</button>
+				        <button onClick={ () => { this.updateRecipe()}} type="button" className="btn btn-primary">Edit</button>
 				      </div>
 
 				    </div>
