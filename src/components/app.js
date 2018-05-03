@@ -15,50 +15,51 @@ export default class App extends Component {
 
 	}
 
+	//add new recipe to recipeItems array
 	saveRecipe(name, ingredients) {
   		//dont mutate state directly. make a copy here and add new value
-  		if (name.length < 2) {
-  			//this.state.error = true;
-  			console.log(this.state.error);
-  			return;
-  		}
 		let splitIngredients = ingredients.split(",");
-  		let arrayCopy = this.state.recipeItems.slice();
-  		arrayCopy.push({name: name, ingredients: splitIngredients});
-		this.setState({recipeItems: arrayCopy});
+  		let recipeItemsCopy = this.state.recipeItems.slice();
+  		recipeItemsCopy.push({name: name, ingredients: splitIngredients});
+		this.setState({recipeItems: recipeItemsCopy});
 	}
 
+	//when edit clicked update recipe details
 	updateRecipe(name, ingredients) {
 		let splitIngredients = ingredients.split(",");
-		let arrayCopy = this.state.recipeItems.slice();
+		let recipeItemsCopy = this.state.recipeItems.slice();
 
 		//Find index of specific object using findIndex method.    
-		let objIndex = arrayCopy.findIndex((obj => obj.name == name));
+		let objIndex = recipeItemsCopy.findIndex((obj => obj.name == name));
 
-		//Update object's name property.
-		arrayCopy[objIndex].ingredients = splitIngredients
+		//Update ingredients
+		recipeItemsCopy[objIndex].ingredients = splitIngredients;
 
-		this.setState({recipeItems: arrayCopy});
+		this.setState({recipeItems: recipeItemsCopy});
 		this.setState({editClicked: false});
 
 	}
 
-
-	handleEditClick(name, ingredients) {
-		//console.log(name);		
+	//save in state which recipe needs to be edited and pass as a prop to EditRecipe component
+	handleEditClick(name, ingredients) {		
 		this.setState({editClicked: true});
 		let recipeToEditCopy = [];
 		recipeToEditCopy.push(name, ingredients);
 		this.setState({recipeToEdit: recipeToEditCopy});
-		//console.log(this.state.recipeToEdit);
 		$('#editRecipeModal').modal('show');
+	}
 
+	deleteRecipe(name) {
+		let recipeItemsCopy = this.state.recipeItems.slice();
+		let objIndex = recipeItemsCopy.findIndex((obj => obj.name == name));
+		recipeItemsCopy.splice(objIndex, 1);
+		this.setState({recipeItems: recipeItemsCopy});
 	}
 
   render() {
     return (
       <div>
-      	<RecipeList handleEditClick = {this.handleEditClick.bind(this)} recipeList = {this.state.recipeItems} />
+      	<RecipeList deleteRecipe = {this.deleteRecipe.bind(this)} handleEditClick = {this.handleEditClick.bind(this)} recipeList = {this.state.recipeItems} />
       	<AddRecipe saveRecipe = {this.saveRecipe.bind(this)} />
       	{this.state.editClicked == true ? <EditRecipe updateRecipe = {this.updateRecipe.bind(this)} recipeDetail = {this.state.recipeToEdit} /> : null}
       	<button type="button" className="btn btn-primary" data-toggle="modal" data-target="#enterRecipeModal">Add Recipe</button>

@@ -18,7 +18,7 @@ class EditRecipe extends Component {
 
 
 	updateRecipe(){
-		//call saveRecipe func and then clear state
+		//call updateRecipe func and then clear state
 		this.props.updateRecipe(this.state.recipeName, this.state.recipeIngredients);
 		$('#editRecipeModal').modal('hide');
 		this.setState({recipeName: "", recipeIngredients: ""});
@@ -28,8 +28,6 @@ class EditRecipe extends Component {
 	render(){
 		return (
 			<div>	
-
-
 				<div className="modal fade" id="editRecipeModal" role="dialog"  aria-hidden="true">
 				  <div className="modal-dialog" role="document">
 				    <div className="modal-content">

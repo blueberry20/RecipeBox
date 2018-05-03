@@ -8,13 +8,7 @@ class RecipeList extends Component {
 	}
 
 
-
 	render (){
-		// const editRecipe = () => {
-		// 	//$('#enterRecipeModal').modal('show');
-		// 	this.setState({editClicked: true});
-		// 	this.props.editRecipe();
-		// }
 
 		const recipes = this.props.recipeList.map((recipe) => {
 			return (
@@ -41,8 +35,8 @@ class RecipeList extends Component {
 				    			)
 				    		})
 				      	}
-				      	<button onClick={ () =>{ this.props.handleEditClick(recipe.name, recipe.ingredients)}} type="button" className="btn btn-outline-dark">Edit</button>
-				      	<button type="button" className="btn btn-danger">Delete</button>
+				      	<button onClick = { () => { this.props.handleEditClick(recipe.name, recipe.ingredients)}} type="button" className="btn btn-outline-dark">Edit</button>
+				      	<button onClick = { () => { this.props.deleteRecipe(recipe.name)}} type="button" className="btn btn-danger">Delete</button>
 				      </div>
 				    </div>
 				  </div>
@@ -55,7 +49,6 @@ class RecipeList extends Component {
 				<div id="accordion">
 					{recipes}
 				</div>
-				{/*{this.state.editClicked == true ? <AddRecipe recipeItems = {this.props.recipeList}/> : null}*/}
 			</div>
 		)
 	}
