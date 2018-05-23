@@ -46,7 +46,8 @@ class AddRecipe extends Component {
 	submitRecipe(){
 		if (this.state.nameError == false && this.state.ingredientsError == false){
 			//call saveRecipe func and then clear state
-			this.props.saveRecipe(this.state.recipeName, this.state.recipeIngredients);
+			let id = this.state.recipeName + Date.now();
+			this.props.saveRecipe(id, this.state.recipeName, this.state.recipeIngredients);
 			$('#enterRecipeModal').modal('hide');
 			this.setState({recipeName: "", recipeIngredients: ""});
 		}	
@@ -57,14 +58,12 @@ class AddRecipe extends Component {
 	render(){
 		return (
 			<div>	
-
-
 				<div className="modal fade" id="enterRecipeModal" role="dialog"  aria-hidden="true">
 				  <div className="modal-dialog" role="document">
 				    <div className="modal-content">
 
 				      <div className="modal-header">
-				        <h5 className="modal-title" id="exampleModalLabel">Add a recipe</h5>
+				        <h5 className="modal-title text-center" id="exampleModalLabel">Add a recipe</h5>
 				        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
 				          <span aria-hidden="true">&times;</span>
 				        </button>

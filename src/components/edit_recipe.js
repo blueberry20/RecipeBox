@@ -7,8 +7,9 @@ class EditRecipe extends Component {
 		super(props);
 
 		this.state = {
-			recipeName: this.props.recipeDetail[0],
-			recipeIngredients: this.props.recipeDetail[1]
+			recipeId: this.props.recipeDetail[0],
+			recipeName: this.props.recipeDetail[1],
+			recipeIngredients: this.props.recipeDetail[2]
 		}
 	}
 
@@ -19,7 +20,7 @@ class EditRecipe extends Component {
 
 	updateRecipe(){
 		//call updateRecipe func and then clear state
-		this.props.updateRecipe(this.state.recipeName, this.state.recipeIngredients);
+		this.props.updateRecipe(this.state.recipeId, this.state.recipeName, this.state.recipeIngredients);
 		$('#editRecipeModal').modal('hide');
 		this.setState({recipeName: "", recipeIngredients: ""});
 	}
@@ -42,7 +43,7 @@ class EditRecipe extends Component {
 				      <div className="modal-body">
 				      	<div className="form-group">
 						    <label>Recipe name</label>
-						    <input id="recipeNameInput" ref="recipeNameInput" value={this.state.recipeName} onChange = { (event) => {this.setState({recipeName: event.target.value})}} type="text" className="form-control" placeholder="Enter recipe name"/>
+						    <input id="recipeNameInput"  value={this.state.recipeName} onChange = { (event) => {this.setState({recipeName: event.target.value})}} type="text" className="form-control" placeholder="Enter recipe name"/>
 						</div>
 						<div className="form-group">
 						    <label>Ingredients</label>

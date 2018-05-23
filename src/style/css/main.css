@@ -1,0 +1,39 @@
+body {
+  background-color: #bae5f5; }
+
+.container {
+  padding: 2em;
+  text-align: center; }
+
+.btn {
+  border: none;
+  color: #fff;
+  border-radius: 0; }
+
+.btn-primary {
+  background-color: #eb8d2d; }
+
+.btn:hover,
+.btn:focus,
+.btn:active {
+  background-color: #ed7b06;
+  outline: none !important;
+  outline: 0 !important;
+  border-color: inherit;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  border: none !important; }
+
+#addRecipeBtn {
+  width: 200px;
+  height: 80px; }
+
+.modal-header {
+  background-color: #eb8d2d; }
+
+h5 {
+  color: #fff;
+  width: 100%; }
+
+.modal-content {
+  background-color: #bae5f5; }

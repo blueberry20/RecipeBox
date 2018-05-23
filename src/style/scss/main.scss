@@ -1,0 +1,51 @@
+$orange: #eb8d2d;
+$lightBlue: #bae5f5;
+
+body {
+	background-color: $lightBlue;
+}
+
+.container {
+	padding: 2em;
+	text-align: center;
+}
+
+.btn {
+	border: none;
+	color: #fff;
+	border-radius: 0;
+}
+
+.btn-primary {
+	background-color: $orange;
+}
+
+.btn:hover,
+.btn:focus,
+.btn:active {
+	background-color: #ed7b06;
+	outline: none !important;
+	outline: 0 !important;
+	border-color: inherit;
+	-webkit-box-shadow: none !important;
+	box-shadow: none !important;
+	border: none !important;
+}
+
+#addRecipeBtn {
+	width: 200px;
+	height: 80px;
+}
+
+.modal-header {
+	background-color: $orange;
+}
+
+h5 {
+	color: #fff;
+	width: 100%;
+}
+
+.modal-content {
+	background-color: $lightBlue;
+}
