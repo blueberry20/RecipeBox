@@ -81,7 +81,7 @@ export default class App extends Component {
 						data-toggle="modal"
 						data-target="#enterRecipeModal"
 					>
-						Add Recipe
+						Add a Recipe
 					</button>
 				</div>
 			</div>
